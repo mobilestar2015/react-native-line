@@ -1,7 +1,14 @@
 buildscript {
     //Buildscript is evaluated before everything else so we can't use getExtOrDefault
     ext {
-        kotlinVersion = '1.7.21'
+        buildToolsVersion = "30.0.2"
+        minSdkVersion = 21
+        compileSdkVersion = 28
+        targetSdkVersion = 30
+        coroutinesAndroidVersion = "1.0.1"
+        coroutinesCoreVersion = "1.0.1"
+        gsonVersion = "2.8.6"
+        linesdkVersion = "5.8.0"
     }
     repositories {
         google()
@@ -11,7 +18,7 @@ buildscript {
     dependencies {
         classpath "com.android.tools.build:gradle:7.0.4"
         //noinspection DifferentKotlinGradleVersion
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
 }
 
@@ -51,6 +58,6 @@ dependencies {
     implementation "com.facebook.react:react-native:+"
     implementation "com.linecorp.linesdk:linesdk:5.8.0"
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion"
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.0.1"
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.0.1"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesAndroidVersion"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesCoreVersion"
 }
