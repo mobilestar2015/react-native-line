@@ -10,12 +10,12 @@ import Foundation
 import LineSDK
 
 @objc(LineLogin) public class LineLogin: NSObject {
-  
+
   // Setup to be called in AppDelegate
   @objc public static func setup(channelID: String, universalLinkURL: URL?) {
     return LoginManager.shared.setup(channelID: channelID, universalLinkURL: universalLinkURL)
   }
-  
+
   @objc public static func application(
     _ application: UIApplication,
     open url: URL,
@@ -23,7 +23,7 @@ import LineSDK
   {
     return LoginManager.shared.application(application, open: url, options: options)
   }
-  
+
   @objc public static func application(
     _ application: UIApplication,
     continue userActivity: NSUserActivity,
@@ -44,7 +44,7 @@ import LineSDK
     let scopes = (args["scopes"] as? [String])?.map { LoginPermission(rawValue: $0) } ?? [.profile]
     let onlyWebLogin = (args["onlyWebLogin"] as? Bool) ?? false
     var parameters: LoginManager.Parameters = LoginManager.Parameters.init()
-    
+
     if onlyWebLogin { parameters.onlyWebLogin = onlyWebLogin }
 
     if let botPrompt = args["botPrompt"] as? String {
@@ -54,7 +54,7 @@ import LineSDK
       default: break
       }
     }
-    
+
     DispatchQueue.main.async {
         LoginManager.shared.login(
           permissions: Set(scopes),
